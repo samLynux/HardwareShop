@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+
+
+<ion-content class="ion-padding" color="medium">
+        <ion-segment  name="segments" (ionChange)="onFilterUpdate($event)" value="list" >
+          <ion-segment-button value="list">
+            <ion-icon name="reorder-four-outline" color="light"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="grid">
+            <ion-icon name="grid" color="light"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="viewMode">
+          <div *ngSwitchCase="'list'">
+            <ion-list color="secondary">
+                <ion-item  [routerLink]="['/', 'recipes','tabs','discover',recipe.id]" color="dark"  *ngFor="let recipe of recipes" style="height: 200px;">
+                  <ion-avatar slot="end" class='ion-text-uppercase' style="height: 200px; width: 200px;">
+                    {{recipe.typeDetails[0]}}
+                    <ion-img  [src]="recipe.imageUrl"></ion-img>
+                  </ion-avatar>
+                  <ion-label color="light">
+                     <br>
+                    {{recipe.merek}} - {{recipe.model}} <br>
+                    Rp. {{recipe.harga}} <br>
+                    Tersedia: {{recipe.stock}}
+                  </ion-label>
+                </ion-item>
+            
+            </ion-list>
+          </div>
+          <div *ngSwitchCase="'grid'">
+            <ion-grid>
+              <ion-row no-padding>
+                  <ion-card *ngFor="let recipe of recipes" style="width:48%;" >
+                      <ion-item [routerLink]="['/', 'recipes','tabs','discover',recipe.id]" color="dark">
+                        <ion-avatar slot="end" >
+                          <ion-img  [src]="recipe.imageUrl"></ion-img>
+                        </ion-avatar>
+                        <ion-label>
+                         <h1 class='ion-text-uppercase'> {{recipe.typeDetails[0]}} </h1><br>
+                          {{recipe.merek}} - {{recipe.model}} <br>
+                          Rp. {{recipe.harga}} <br>
+                          Tersedia: {{recipe.stock}}
+                        </ion-label>
+                      </ion-item>
+                  </ion-card>
+              </ion-row>
+              
+            </ion-grid>
+          </div>
+        </div>
+</ion-content>
+
+

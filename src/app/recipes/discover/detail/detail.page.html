@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-img style="width: 800px; height: 400px; align-items: center; margin: auto;" [src]="loadedRecipe.imageUrl" ></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1>Merek: {{loadedRecipe.merek}}</h1>
+        <h1>Model: {{loadedRecipe.model}}</h1>
+
+        <div [ngSwitch]="whatType">
+          <div *ngSwitchCase="'cpu'">
+            <h1>BaseClock: {{loadedRecipe.typeDetails[1]}} Ghz</h1>
+            <h1>BoostClock: {{loadedRecipe.typeDetails[2]}} Ghz</h1>
+            <h1>Cores/Threads : {{loadedRecipe.typeDetails[3]}} / {{loadedRecipe.typeDetails[4]}}</h1>
+          </div>
+          <div *ngSwitchCase="'ram'">
+            <h1>Speed: {{loadedRecipe.typeDetails[1]}} Mhz</h1>
+            <h1>Size: {{loadedRecipe.typeDetails[2]}} GB</h1>
+          </div>
+          <div *ngSwitchCase="'motherboard'">
+            <h1>Chipset: {{loadedRecipe.typeDetails[1]}}</h1>
+            <h1>Processor Socket Type: {{loadedRecipe.typeDetails[2]}}</h1>
+          </div>
+          <div *ngSwitchCase="'gpu'">
+            
+          </div>
+        </div>
+        <h1>Harga: {{loadedRecipe.harga}}</h1>
+        <h1>Stock Tersedia: {{loadedRecipe.stock}}</h1>
+        <h1>{{loadedRecipe.deskripsi}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
