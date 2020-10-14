@@ -69,15 +69,15 @@ export class OffersPage implements OnInit {
     slidingItem.close();
     const alert = await this.alertCtrl.create(
       {
-        header:'Hapus Kontak?',
-        message: 'Apakan yakin? Jika sudah hilang tidak akan bisa kembali lagi',
+        header:'Hapus Produk?',
+        message: 'Apakan yakin?',
         buttons:[
           {
-            text:'Batal',
+            text:'Cancel',
             role:'cancel'
           },
           {
-            text: 'Hapus',
+            text: 'Delete',
             handler: () => this.deleteThis(id)
           }
         ]
